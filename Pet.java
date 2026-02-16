@@ -1,41 +1,75 @@
+public class Pet 
+{
 
-public class Pet {
-	
-private String name;
+    private String type;
+    private String name;
+    private int age;
 
-public Pet()
-{
-	this.setName("");
-}
-public void setName(String newName)
-{
-	this.name = newName;
-}
-public String getName()
-{
-	return this.name;
-}
-public String toString()
-{
-	String output = "Pet name: ";
-	output += this.getName();
-	return output;
-}
+    public Pet() 
+    {
+        this.type = "Animal";
+        this.name = "Pet Name";
+        this.age = 1;
+    }
 
-	public static void main(String[] args)
-	{
-		
-		Pet myPet1 = new Pet();
-		myPet1.setName("Sookie");
-		System.out.println(myPet1.getName());
-		System.out.println(myPet1);
-		System.out.println("");
-		myPet1.setName("Pet Name");
-		System.out.println("Pet information:");
-		System.out.println(myPet1);
-		Pet myPet2 = new Pet();
-		myPet2.setName("Thunder");
-		System.out.println("Pet information:");
-		System.out.println(myPet2);
-	}
+    public Pet(String type, String name, int age) 
+    {
+        this.type = type;
+        this.name = name;
+        this.age = age;
+    }
+
+    public void setType(String type) 
+    {
+        this.type = type;
+    }
+
+    public void setName(String name) 
+    {
+        this.name = name;
+    }
+
+    public void setAge(int age) 
+    {
+        this.age = age;
+    }
+
+    public String getType() 
+    {
+        return type;
+    }
+
+    public String getName() 
+    {
+        return name;
+    }
+
+    public int getAge() 
+    {
+        return age;
+    }
+    
+    public String speak() 
+    {
+        if (type.equalsIgnoreCase("dog")) 
+        {
+            return "Woof";
+        } 
+        else if (type.equalsIgnoreCase("cat")) 
+        {
+            return "Meow";
+        } 
+        else 
+        {
+            return "noise";
+        }
+    }
+    public String toString() 
+    {
+        return "Pet information:\n" +
+               "Type: " + type + "\n" +
+               "Name: " + name + "\n" +
+               "Sound: " + speak() + "\n" +
+               "Age:  " + age + "\n";
+    }
 }
