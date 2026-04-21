@@ -1,39 +1,39 @@
-/**
- * This class determines the grade for an exam.
- */
 public class Exam extends Assessment {
 
     private int numMissed;
     private int pointsEach;
 
-    /**
-     * Constructor sets number of questions and number missed.
-     * @param questions The number of questions.
-     * @param missed The number of questions missed.
-     */
-    public Exam(int questions, int missed) {
-        this.numMissed = missed;
+    public Exam(String questionsInput, String missedInput) {
+        try {
+            int questions = Integer.parseInt(questionsInput);
+            int missed = Integer.parseInt(missedInput);
 
-        // Calculate points per question
-        this.pointsEach = 100 / questions;
+            if (questions == 0) {
+                throw new ArithmeticException("Number of questions cannot be zero.");
+            }
 
-        // Calculate score
-        int score = 100 - (missed * this.pointsEach);
+            this.numMissed = missed;
 
-        // Store score in parent class
-        setScore(score);
+            this.pointsEach = 100 / questions;
+
+            int score = 100 - (missed * this.pointsEach);
+
+            setScore(score);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Please enter valid numeric values.");
+            setScore(0);
+
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+            setScore(0);
+        }
     }
 
-    /**
-     * Returns number of questions missed.
-     */
     public int getNumMissed() {
         return this.numMissed;
     }
 
-    /**
-     * Returns points each question is worth.
-     */
     public int getPointsEach() {
         return this.pointsEach;
     }
